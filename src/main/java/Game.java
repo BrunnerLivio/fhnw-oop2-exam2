@@ -1,6 +1,7 @@
 import exceptions.InvalidAddressException;
 import models.Address;
 import models.Player;
+import utils.GameUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -159,7 +160,13 @@ public class Game {
    * `listPlayerNames` **nicht** aufrufen werden **nicht bewertet** und führen zu
    * 0 Punkten.
    */
-  // TODO add method `listPlayerNamesNullSafe`
+  public List<String> listPlayerNamesNullSafe() {
+    try {
+      return GameUtils.listPlayerNames(players);
+    } catch (NullPointerException e) {
+      return List.of();
+    }
+  }
 
   /**
    * Teilaufgabe b)
@@ -178,6 +185,19 @@ public class Game {
    * - Der Spieler hat eine Adresse, aber die Strasse oder die Stadt (oder beide)
    * sind leer
    */
-  // TODO add method `validatePlayers`
+  public void validatePlayers() throws InvalidAddressException {
+    if (players == null) {
+      throw new IllegalStateException();
+    }
+
+    boolean isEverythingValid = players.stream().allMatch(
+        p -> p.getAddress() != null &&
+            p.getAddress().getCity() != null && !p.getAddress().getCity().equals("") &&
+            p.getAddress().getStreet() != null && !p.getAddress().getStreet().equals(""));
+
+    if (!isEverythingValid) {
+      throw new InvalidAddressException("Invalide addresse gefunden");
+    }
+  }
 
 }

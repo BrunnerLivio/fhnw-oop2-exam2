@@ -305,145 +305,144 @@ public class GameTest {
     @Nested
     class Aufgabe2 {
 
-//        @Test
-//        void testAufgabe2ListPlayerNamesNullSafePlayersNoExceptionThrown() {
-//            // given
-//            Game game = new Game(PLAYERS);
-//
-//            // when
-//            List<String> listPlayerNames = game.listPlayerNamesNullSafe();
-//
-//            // then `listPlayerNames()` is called internally
-//            assertEquals(8, listPlayerNames.size());
-//            String[] expectedNames = {
-//                    PLAYERS.get(0).getName(), PLAYERS.get(1).getName(), PLAYERS.get(2).getName(), PLAYERS.get(3).getName(),
-//                    PLAYERS.get(4).getName(), PLAYERS.get(5).getName(), PLAYERS.get(6).getName(), PLAYERS.get(7).getName()
-//            };
-//            assertArrayEquals(expectedNames, listPlayerNames.toArray());
-//
-//            // given
-//            List<Player> players = PLAYERS_NULL;
-//            game = new Game(players);
-//            assertThrows(NullPointerException.class, () -> GameUtils.listPlayerNames(players)); // listPlayerNames() still throws NullPointerException
-//
-//            // when
-//            game.listPlayerNamesNullSafe();
-//
-//            // then
-//            // no exception is thrown
-//        }
-//
-//        @Test
-//        void testAufgabe2ListPlayerNamesNullSafePlayersIsNull() {
-//            // given
-//            List<Player> players = null;
-//            assertThrows(NullPointerException.class, () -> GameUtils.listPlayerNames(players));  // listPlayerNames() still throws NullPointerException
-//            Game game = new Game(players);
-//
-//            // when
-//            List<String> emptyPlayerNames = game.listPlayerNamesNullSafe();
-//
-//            // then
-//            // no exception is thrown
-//            assertEquals(0, emptyPlayerNames.size());
-//        }
-//
-//        @Test
-//        void testAufgabe2ListPlayerNamesNullSafeEmptyList() {
-//            // given
-//            List<Player> players = PLAYERS_NULL;
-//            game = new Game(players);
-//            assertThrows(NullPointerException.class, () -> GameUtils.listPlayerNames(players)); // listPlayerNames() still throws NullPointerException
-//
-//            // when
-//            List<String> playerNames = game.listPlayerNamesNullSafe();
-//
-//            // then
-//            // no exception is thrown
-//            assertEquals(0, playerNames.size());
-//        }
-//
-//        @Test
-//        void testAufgabe2ValidatePlayersNoExceptionIfValid() throws Exception {
-//            // given
-//            Game game = new Game(
-//                    List.of(
-//                            new Player(new Address("Hauptstrasse 3", "Brugg")),
-//                            new Player(new Address("Hauptstrasse 4", "Brugg"))
-//                    )
-//            );
-//
-//            // when, then (no exception is thrown)
-//            game.validatePlayers();
-//        }
-//
-//        @Test
-//        void testAufgabe2ValidatePlayersNull() {
-//            // given
-//            Game game = new Game(null);
-//
-//            // when, then
-//            assertThrows(IllegalStateException.class, game::validatePlayers);
-//        }
-//
-//        @Test
-//        void testAufgabe2ValidatePlayersNoAddress() {
-//            // given
-//            Game game = new Game(List.of(new Player("Fritz")));
-//
-//            // when, then
-//            assertThrows(InvalidAddressException.class, game::validatePlayers);
-//        }
-//
-//        @Test
-//        void testAufgabe2ValidatePlayersStreetOrCityNull() {
-//            // given
-//            game = new Game(
-//                    List.of(
-//                            new Player(new Address(null, "Brugg")),
-//                            new Player(new Address("Hauptstrasse 4", "Brugg"))
-//                    )
-//            );
-//
-//            // when, then
-//            assertThrows(InvalidAddressException.class, game::validatePlayers);
-//
-//            // given
-//            game = new Game(
-//                    List.of(
-//                            new Player(new Address("Hauptstrasse 3", "Brugg")),
-//                            new Player(new Address("Hauptstrasse 4", null))
-//                    )
-//            );
-//
-//            // when, then
-//            assertThrows(InvalidAddressException.class, game::validatePlayers);
-//        }
-//
-//        @Test
-//        void testAufgabe2ValidatePlayersStreetOrCityEmpty() {
-//            // given
-//            game = new Game(
-//                    List.of(
-//                            new Player(new Address("", "Brugg")),
-//                            new Player(new Address("Hauptstrasse 4", "Brugg"))
-//                    )
-//            );
-//
-//            // when, then
-//            assertThrows(InvalidAddressException.class, game::validatePlayers);
-//
-//            // given
-//            game = new Game(
-//                    List.of(
-//                            new Player(new Address("Hauptstrasse 3", "Brugg")),
-//                            new Player(new Address("Hauptstrasse 4", ""))
-//                    )
-//            );
-//
-//            // when, then
-//            assertThrows(InvalidAddressException.class, game::validatePlayers);
-//        }
+       @Test
+       void testAufgabe2ListPlayerNamesNullSafePlayersNoExceptionThrown() {
+           // given
+           Game game = new Game(PLAYERS);
+
+           // when
+           List<String> listPlayerNames = game.listPlayerNamesNullSafe();
+
+           // then `listPlayerNames()` is called internally
+           assertEquals(8, listPlayerNames.size());
+           String[] expectedNames = {
+                   PLAYERS.get(0).getName(), PLAYERS.get(1).getName(), PLAYERS.get(2).getName(), PLAYERS.get(3).getName(),
+                   PLAYERS.get(4).getName(), PLAYERS.get(5).getName(), PLAYERS.get(6).getName(), PLAYERS.get(7).getName()
+           };
+           assertArrayEquals(expectedNames, listPlayerNames.toArray());
+
+           // given
+           List<Player> players = PLAYERS_NULL;
+           game = new Game(players);
+           assertThrows(NullPointerException.class, () -> GameUtils.listPlayerNames(players)); // listPlayerNames() still throws NullPointerException
+
+           // when
+           game.listPlayerNamesNullSafe();
+
+           // then
+           // no exception is thrown
+       }
+
+       @Test
+       void testAufgabe2ListPlayerNamesNullSafePlayersIsNull() {
+           // given
+           List<Player> players = null;
+           assertThrows(NullPointerException.class, () -> GameUtils.listPlayerNames(players));  // listPlayerNames() still throws NullPointerException
+           Game game = new Game(players);
+
+           // when
+           List<String> emptyPlayerNames = game.listPlayerNamesNullSafe();
+
+           // then
+           // no exception is thrown
+           assertEquals(0, emptyPlayerNames.size());
+       }
+
+       @Test
+       void testAufgabe2ListPlayerNamesNullSafeEmptyList() {
+           // given
+           List<Player> players = PLAYERS_NULL;
+           game = new Game(players);
+           assertThrows(NullPointerException.class, () -> GameUtils.listPlayerNames(players)); // listPlayerNames() still throws NullPointerException
+
+           // when
+           List<String> playerNames = game.listPlayerNamesNullSafe();
+
+           // then
+           // no exception is thrown
+           assertEquals(0, playerNames.size());
+       }
+
+       @Test
+       void testAufgabe2ValidatePlayersNoExceptionIfValid() throws Exception {
+           // given
+           Game game = new Game(
+                   List.of(
+                           new Player(new Address("Hauptstrasse 3", "Brugg")),
+                           new Player(new Address("Hauptstrasse 4", "Brugg"))
+                   )
+           );
+
+           // when, then (no exception is thrown)
+           game.validatePlayers();
+       }
+       @Test
+       void testAufgabe2ValidatePlayersNull() {
+           // given
+           Game game = new Game(null);
+
+           // when, then
+           assertThrows(IllegalStateException.class, game::validatePlayers);
+       }
+
+       @Test
+       void testAufgabe2ValidatePlayersNoAddress() {
+           // given
+           Game game = new Game(List.of(new Player("Fritz")));
+
+           // when, then
+           assertThrows(InvalidAddressException.class, game::validatePlayers);
+       }
+
+       @Test
+       void testAufgabe2ValidatePlayersStreetOrCityNull() {
+           // given
+           game = new Game(
+                   List.of(
+                           new Player(new Address(null, "Brugg")),
+                           new Player(new Address("Hauptstrasse 4", "Brugg"))
+                   )
+           );
+
+           // when, then
+           assertThrows(InvalidAddressException.class, game::validatePlayers);
+
+           // given
+           game = new Game(
+                   List.of(
+                           new Player(new Address("Hauptstrasse 3", "Brugg")),
+                           new Player(new Address("Hauptstrasse 4", null))
+                   )
+           );
+
+           // when, then
+           assertThrows(InvalidAddressException.class, game::validatePlayers);
+       }
+
+       @Test
+       void testAufgabe2ValidatePlayersStreetOrCityEmpty() {
+           // given
+           game = new Game(
+                   List.of(
+                           new Player(new Address("", "Brugg")),
+                           new Player(new Address("Hauptstrasse 4", "Brugg"))
+                   )
+           );
+
+           // when, then
+           assertThrows(InvalidAddressException.class, game::validatePlayers);
+
+           // given
+           game = new Game(
+                   List.of(
+                           new Player(new Address("Hauptstrasse 3", "Brugg")),
+                           new Player(new Address("Hauptstrasse 4", ""))
+                   )
+           );
+
+           // when, then
+           assertThrows(InvalidAddressException.class, game::validatePlayers);
+       }
 
     }
 }
