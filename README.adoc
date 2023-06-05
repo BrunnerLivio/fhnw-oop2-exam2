@@ -1,0 +1,141 @@
+= oopI2 Prüfung 2
+
+== Bearbeitet von
+
+**Name:**
+
+**Push-Zeitpunkt:**
+
+== Abgabe
+
+* Bearbeitungszeit: 60 Minuten
+* Sobald Sie fertig sind:
+** Pushen Sie Ihre Lösung auf den Master-Branch in Ihrem GitHub-Repository
+** Schreiben Sie die Uhrzeit des Pushs in den Abschnitt "Bearbeitet von"
+** (optional, aber empfohlen) prüfen Sie auf der GitHub-Webseite, ob die Lösung gepusht wurde
+** Klappen Sie Ihren Laptop zu, geben dieses Blatt ab und verlassen ruhig das Zimmer
+
+== Erlaubte Hilfsmittel
+
+* Erlaubt sind sämtliche schriftlichen Unterlagen, Notizen und Code (physisch und elektronisch) und Ihr Laptop.
+* Nicht erlaubt ist das Internet (wenn vorhanden Flugmodus aktivieren, sonst WLAN deaktivieren), ausser zum Pushen der Commits **am Schluss** zur Abgabe der Prüfung.
+
+== Bitte beachten Sie
+
+* Tragen Sie, am besten sofort, Ihren Namen unter "Bearbeitet von" ein. Manche GitHub-Account-Namen können nicht eindeutig einer Person zugeordnet werden.
+* Lösungen mit Compile-Fehlern führen zu einem deutlichen Punkteabzug.
+* In beiden Aufgaben darf jeweils nur in der Klasse `Game` der Code geändert werden. In jeder anderen Klasse dürfen **keine** Änderungern gemacht werden.
+* In Test-Klassen dürfen ausschliesslich Tests auskommentiert werden, der Inhalt von diesen darf nicht geändert werden.
+
+== Aufgabe 1 - Lambdas & Streams (18 Punkte)
+
+Sie sollen in der Klasse `Game` die folgenden Methoden gemäss den **Anweisungen** in der Teilaufgabe und den **vorgegebenen Testcases** in `GameTest` implementieren.
+
+Für **jede** Teilaufgabe muss jeweils **nur** der **Inhalt der Methode** mit dem **angegebenen Namen** in der Klasse `Game` implementiert werden.
+
+Jede Methode darf **ausschliesslich** aus **genau einem** zusammenhängenden Stream ausgehend vom Array `players` (mit **beliebig vielen** Intermediate-Operationen und **genau einer** Terminal-Operation) bestehen, von dem das Resultat zurückgegeben wird und **sonst nichts anderes**.
+
+Teilaufgaben, welche in den Lösungen **nicht** das Stream-API verwenden werden nicht bewertet, führen also zu 0 Punkten.
+
+Die Verwendung der `forEach`-Methode ist ebenfalls **nicht** erlaubt.
+
+=== Teilaufgaben
+
+**a)** Methode `playersOverAge`: Gibt eine Liste aller Spieler (`Player`) zurück, die **älter** sind als das Alter welches als Parameter mitgegeben wird.
+
+**b)** Methode `hasPlayersFromCity`: Gibt zurück, ob **mindestens einer** der Spieler in der Stadt wohnen, die als Parameter mitgegeben wird.
+
+**c)** Methode `playerWithAddress`: Gibt **den Spieler** zurück, welcher an der Adresse wohnt, die als Parameter mitgegeben wird. Sie müssen als Rückgabetyp `Optional<Player>` verwenden, da es sein könnte, dass es keinen Spieler an dieser Adresse gibt. Tipp: Schauen Sie welche Terminal-Operationen im Stream `Optional<Player>` zurückgeben.
+
+**d)** Methode `highestScore`: Gibt die höchste erzielte Punktzahl (`score`) unter allen Spielern in diesem Spiel zurück.
+
+**e)** Methode `uniquePlayerNamesSorted`: Gibt eine Liste der **Namen** aller Spieler zurück, welche **keine Namen doppelt** enthält und nach Namen **alphabetisch aufsteigend** sortiert ist.
+
+**f)** Methode `playersSortedByScoreDescending`: Gibt eine Liste aller Spieler zurück, die nach der Punktzahl (`score`) **absteigend** sortiert ist.
+
+**g)** Methode `playerByScore`: Gibt eine Map zurück, welche basierend auf dem Array `players` als **Key** die erreichte Punktzahl (`score`) und als **Value** das Spieler-Objekt enthält, welche die Punktzahl im Key erreicht hat. Sie können hier davon ausgehen, dass im `players`-Array **jeder** Spieler eine **unterschiedliche** Punktzahl hat, es gibt also **nicht** mehrere Spieler mit der gleichen Punktzahl.
+
+== Aufgabe 2 - Exceptions (8 Punkte)
+
+Sie sollen in der Klasse `Game` die folgenden Methoden gemäss den **Anweisungen** in der Teilaufgabe und den **vorgegebenen Testcases** in `GameTest` implementieren.
+
+Für **jede** Teilaufgabe muss jeweils **genau eine** Methode mit dem **angegebenen Namen** in der Klasse `Game` erstellt werden.
+
+Es ist Ihnen überlassen, ob Sie in dieser Aufgabe (falls nötig) Lambdas und oder Streams verwenden oder nicht.
+
+=== Teilaufgabe a)
+
+Die vorgegebene statische Methode `listPlayerNames` in der Klasse `GameUtils` gibt eine Liste der Namen aller Spieler zurück, hat aber den Nachteil, dass in gewissen Fällen eine `NullPointerException` geworfen werden könnte.
+
+Schreiben Sie die neue Methode **`listPlayerNamesNullSafe`** in der Klasse `Game`, welche die Methode `listPlayerNames` von `GameUtils` aufruft, aber für den Fall dass diese eine `NullPointerException` wirft, stattdessen eine **leere Liste** zurückgibt.
+
+Lösungen, welche die Klasse `GameUtils` **verändern** oder die Methode `listPlayerNames` **nicht** aufrufen werden **nicht bewertet** und führen zu 0 Punkten.
+
+=== Teilaufgabe b)
+
+Schreiben Sie die Methode **`validatePlayers`** mit folgender Funktionalität:
+
+* falls die Referenz `players` auf `null` zeigt, wird eine **`IllegalStateException`** geworfen.
+* falls **mindestens einer** der Spieler in der Liste `players` eine **ungültige** Adresse hat, wird eine **`InvalidAddressException`** geworfen.
+
+Die `InvalidAddressException` finden Sie im Package `exceptions` und sollen diese verwenden.
+
+Eine Adresse gilt in folgenden Fällen als ungültig:
+
+* Der Spieler hat keine Adresse
+* Der Spieler hat eine Adresse, aber die Strasse oder die Stadt (oder beide) sind leer
+
+== Bewertung
+
+Insgesamt können maximal 26 Punkte erzielt werden.
+
+Pro bestandene Test-Methode gibt es einen Punkt, ausser es ist eine andere Punktzahl bei einem Test angegeben.
+
+Compiliert Ihr Code nicht, führt das zu einem deutlichen Punkteabzug.
+
+*0 Punkte* gibt es
+
+* falls Ihr Name und oder der Push-Zeitpunkt nicht im "Bearbeiten von"-Abschnittt eingetragen ist
+* bei unerlaubten Veränderungen vom Code gemäss den Aufgaben
+* bei Plagiaten oder Betrügen in irgendeiner Weise
+
+== Bei Problemen mit dem IntelliJ-Setup
+
+Es kommt immer wieder mal vor, dass der Setup des IntelliJ-Projekts nicht auf Anhieb funktioniert oder "plötzlich"
+nicht mehr funktioniert.
+
+Sie brauchen in so einem Fall NICHT nochmal den Invitation-Link annehmen oder das Projekt via “Project from Version Control” oder "git clone …" nochmal anlegen.
+
+**WICHTIG: **Sollten Sie noch Code geschrieben haben seitdem Sie das letzte Mal einen Commit gemacht haben, machen Sie einen Commit und einen Push bevor Sie die folgenden Schritte befolgen.
+
+Versuchen Sie stattdessen die folgenden Dinge, in der genannten Reihenfolge und prüfen nach jedem Schritt, ob es wieder funktioniert:
+
+1. Gehen Sie auf "File -&gt; Project Structure..." und stellen Sie sicher, dass im neuen Fenster im Reiter "Project" unter "SDK" das Azul JDK 19 mit JavaFX ausgewählt ist
+
+2. Gehen Sie auf "Build -&gt; Rebuild Project"
+
+3. Sollten Sie im IntelliJ links bei den Dateien als Symbol der Datei `pom.xml` **KEIN** blaues "m" haben
+  - Machen Sie einen Rechtsklick auf die Datei `pom.xml` und klicken Sie dann auf "Add as Maven Project" (ziemlich weit unten)
+  - Sollten Sie gefragt werden, klicken Sie auf "Trust Project"
+
+4. Gehen Sie auf "View -&gt; Tool Windows -&gt; Maven", im neu geöffneten "Maven" Fenster:
+  - Warten Sie jeweils zwischen den Klicks auf die Buttons bis IntelliJ mit dem jeweiligen Prozess fertig ist
+  - Klicken Sie oben unterhalb von "Maven" zuerst auf den ersten Button "Reload All Maven Projects"
+  - Dann auf den Button daneben "Generate Sources ..."
+  - Dann auf den Button daneben "Download Sources..." und dann auf "Download Sources and Documentation"
+
+5. Gehen Sie auf "File -&gt; Invalidate Caches...", im neu geöffneten Dialog:
+  - Ein Häkchen hinzufügen bei "Clear file system cache..."
+  - Dann auf "Invalidate and Restart" klicken
+
+6. Projekt im IntelliJ schliessen
+  - Pfad des Projekts im Finder / Explorer öffnen
+  - Das Verzeichnis `.idea` löschen (es könnte je nach dem notwendig sein, versteckte Ordner anzeigen zu lassen)
+  - Im IntelliJ auf "File -&gt; Open" gehen, Pfad des Ordners vom Projekt auswählen und öffnen
+  - Falls gefragt "Trust Project" anklicken
+  - Sollte dies nicht helfen, versuchen Sie Schritte 1-3 erneut, und falls das auch nicht hilft, gehen Sie zu Schritt 7
+
+7. Projekt im IntelliJ schliessen
+  - Ordner vom Projekt im Finder / Explorer löschen
+  - Gehen Sie auf "File -&gt; New -&gt; Project from Version Control"
+  - Gehen Sie nun weiter vor, wie wenn Sie ein Projekt zum ersten Mal von GitHub neu anlegen.
